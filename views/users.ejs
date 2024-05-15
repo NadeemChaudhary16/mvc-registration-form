@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/users.css" type="text/css">
+    <title>Users</title>
+</head>
+<body>
+    <h1> Registered Users</h1>
+    <% for(let user of users){ %>
+      <div class="user-card">
+        <p>Name: <%= user.name %></p>
+        <p>State: <%= user.state %></p>
+        <p>City: <%= user.city %></p>
+        <form method="GET" action="/users/<%= user._id %>/edit">
+        <button>Update User Details</button>
+        </form>
+        <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+        <button class="delete-btn">Delete User</button>
+        </form>
+      </div>
+        <% } %>
+
+        <form method="GET" action="/users/new">
+            <button>Insert New User</button>
+        </form>
+
+</body>
+</html>
